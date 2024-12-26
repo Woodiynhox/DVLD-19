@@ -1,0 +1,13 @@
+# Visual Studio specific
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Build outputs
+bin/
+obj/
+
+# Other
+*.log
