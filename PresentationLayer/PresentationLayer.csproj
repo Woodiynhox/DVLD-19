@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,6 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlPersonalInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlPersonalInfo.Designer.cs">
+      <DependentUpon>ctrlPersonalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUsers.Designer.cs">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagePeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,8 +88,17 @@
     <EmbeddedResource Include="AddEditPerson.resx">
       <DependentUpon>AddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlPersonalInfo.resx">
+      <DependentUpon>ctrlPersonalInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagePeople.resx">
       <DependentUpon>ManagePeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUsers.resx">
+      <DependentUpon>ManageUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +110,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,9 +124,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data Layer - Applications\Data Layer - Applications.csproj">
+      <Project>{05e570f3-0edf-43e9-a69d-44568131e655}</Project>
+      <Name>Data Layer - Applications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic Layer - Applications\Logic Layer - Applications.csproj">
+      <Project>{156a83e2-706a-4fe7-b023-7daa8f30ae2a}</Project>
+      <Name>Logic Layer - Applications</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PeopleManagBusinessLayer\PeopleManagBusinessLayer.csproj">
       <Project>{36bfdcca-bc2c-45c0-9ed2-e86c33e4d60c}</Project>
       <Name>PeopleManagBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UI - Applications\UI Layer - Applications.csproj">
+      <Project>{430e6f8e-57d9-4d03-9021-e89f37b92fa3}</Project>
+      <Name>UI Layer - Applications</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +485,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Written Test 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users 2 4001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Person 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Man 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Address 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phone 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Country 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

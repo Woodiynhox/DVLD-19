@@ -28,29 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.pbManagePeople = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvAllPeople = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnAddNewPerson = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pbManagePeople = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbManagePeople
-            // 
-            this.pbManagePeople.Image = global::PresentationLayer.Properties.Resources.People_400;
-            this.pbManagePeople.Location = new System.Drawing.Point(405, 0);
-            this.pbManagePeople.Name = "pbManagePeople";
-            this.pbManagePeople.Size = new System.Drawing.Size(168, 151);
-            this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbManagePeople.TabIndex = 0;
-            this.pbManagePeople.TabStop = false;
             // 
             // label1
             // 
@@ -66,6 +55,7 @@
             // 
             // dgvAllPeople
             // 
+            this.dgvAllPeople.BackgroundColor = System.Drawing.Color.White;
             this.dgvAllPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllPeople.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvAllPeople.Location = new System.Drawing.Point(5, 207);
@@ -73,6 +63,38 @@
             this.dgvAllPeople.Size = new System.Drawing.Size(1049, 227);
             this.dgvAllPeople.TabIndex = 2;
             this.dgvAllPeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAllPeople_CellContentClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // btnAddNewPerson
+            // 
+            this.btnAddNewPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewPerson.Image = global::PresentationLayer.Properties.Resources.Add_Person_40;
+            this.btnAddNewPerson.Location = new System.Drawing.Point(961, 143);
+            this.btnAddNewPerson.Name = "btnAddNewPerson";
+            this.btnAddNewPerson.Size = new System.Drawing.Size(93, 58);
+            this.btnAddNewPerson.TabIndex = 4;
+            this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
             // 
             // button1
             // 
@@ -88,37 +110,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnAddNewPerson
+            // pbManagePeople
             // 
-            this.btnAddNewPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewPerson.Image = global::PresentationLayer.Properties.Resources.Add_Person_40;
-            this.btnAddNewPerson.Location = new System.Drawing.Point(961, 143);
-            this.btnAddNewPerson.Name = "btnAddNewPerson";
-            this.btnAddNewPerson.Size = new System.Drawing.Size(93, 58);
-            this.btnAddNewPerson.TabIndex = 4;
-            this.btnAddNewPerson.UseVisualStyleBackColor = true;
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.pbManagePeople.Image = global::PresentationLayer.Properties.Resources.People_400;
+            this.pbManagePeople.Location = new System.Drawing.Point(405, 0);
+            this.pbManagePeople.Name = "pbManagePeople";
+            this.pbManagePeople.Size = new System.Drawing.Size(168, 151);
+            this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbManagePeople.TabIndex = 0;
+            this.pbManagePeople.TabStop = false;
             // 
             // frmMngPeople
             // 
@@ -133,9 +133,9 @@
             this.Name = "frmMngPeople";
             this.Text = "Manage People";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllPeople)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

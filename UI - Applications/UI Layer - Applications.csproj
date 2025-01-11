@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{430E6F8E-57D9-4D03-9021-E89F37B92FA3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI___Applications</RootNamespace>
+    <AssemblyName>UI - Applications</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationsTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationsTypes.Designer.cs">
+      <DependentUpon>ApplicationsTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalDrivingLicenceApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalDrivingLicenceApp.Designer.cs">
+      <DependentUpon>LocalDrivingLicenceApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MngTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MngTestTypes.Designer.cs">
+      <DependentUpon>MngTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewLocalApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewLocalApplications.Designer.cs">
+      <DependentUpon>NewLocalApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ApplicationsTypes.resx">
+      <DependentUpon>ApplicationsTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalDrivingLicenceApp.resx">
+      <DependentUpon>LocalDrivingLicenceApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MngTestTypes.resx">
+      <DependentUpon>MngTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewLocalApplications.resx">
+      <DependentUpon>NewLocalApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application Types 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logic Layer - Applications\Logic Layer - Applications.csproj">
+      <Project>{156a83e2-706a-4fe7-b023-7daa8f30ae2a}</Project>
+      <Name>Logic Layer - Applications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PeopleManagBusinessLayer\PeopleManagBusinessLayer.csproj">
+      <Project>{36bfdcca-bc2c-45c0-9ed2-e86c33e4d60c}</Project>
+      <Name>PeopleManagBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PeopleMangDataLayer\PeopleMangDataLayer.csproj">
+      <Project>{30de3567-e388-4b95-be23-ecc12cc3f292}</Project>
+      <Name>PeopleMangDataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TestType 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LocalDriving License.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Final.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\List 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LocalDriving License1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lost Driving License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User 32 -2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
