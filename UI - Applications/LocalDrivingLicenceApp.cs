@@ -55,5 +55,7 @@ namespace UI___Applications
             frmNewLocalApplications frm = new frmNewLocalApplications(_username);
             frm.ShowDialog();
         }
+
+       
     }
 }

@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvLocalDrivingLicenceApplications = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.sechduleTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ssToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ssToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ssToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenceApplications)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +59,19 @@
             this.dgvLocalDrivingLicenceApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLocalDrivingLicenceApplications.BackgroundColor = System.Drawing.Color.White;
             this.dgvLocalDrivingLicenceApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLocalDrivingLicenceApplications.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvLocalDrivingLicenceApplications.Location = new System.Drawing.Point(3, 253);
             this.dgvLocalDrivingLicenceApplications.Name = "dgvLocalDrivingLicenceApplications";
             this.dgvLocalDrivingLicenceApplications.Size = new System.Drawing.Size(1137, 150);
             this.dgvLocalDrivingLicenceApplications.TabIndex = 2;
             this.dgvLocalDrivingLicenceApplications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocalDrivingLicenceApplications_CellContentClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sechduleTestToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 28);
             // 
             // button1
             // 
@@ -74,6 +89,39 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // sechduleTestToolStripMenuItem
+            // 
+            this.sechduleTestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ssToolStripMenuItem,
+            this.ssToolStripMenuItem1,
+            this.ssToolStripMenuItem2});
+            this.sechduleTestToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sechduleTestToolStripMenuItem.Image = global::UI___Applications.Properties.Resources.Schedule_Test_512;
+            this.sechduleTestToolStripMenuItem.Name = "sechduleTestToolStripMenuItem";
+            this.sechduleTestToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.sechduleTestToolStripMenuItem.Text = "Schedule Test";
+            // 
+            // ssToolStripMenuItem
+            // 
+            this.ssToolStripMenuItem.Image = global::UI___Applications.Properties.Resources.Vision_512;
+            this.ssToolStripMenuItem.Name = "ssToolStripMenuItem";
+            this.ssToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
+            this.ssToolStripMenuItem.Text = "Schedule Vision Test";
+            // 
+            // ssToolStripMenuItem1
+            // 
+            this.ssToolStripMenuItem1.Image = global::UI___Applications.Properties.Resources.Written_Test_512;
+            this.ssToolStripMenuItem1.Name = "ssToolStripMenuItem1";
+            this.ssToolStripMenuItem1.Size = new System.Drawing.Size(224, 24);
+            this.ssToolStripMenuItem1.Text = "Schedule Written Test";
+            // 
+            // ssToolStripMenuItem2
+            // 
+            this.ssToolStripMenuItem2.Image = global::UI___Applications.Properties.Resources.Street_Test_32;
+            this.ssToolStripMenuItem2.Name = "ssToolStripMenuItem2";
+            this.ssToolStripMenuItem2.Size = new System.Drawing.Size(224, 24);
+            this.ssToolStripMenuItem2.Text = "Schedule Street Test";
             // 
             // pictureBox1
             // 
@@ -100,6 +148,7 @@
             this.Text = "LocalDrivingLicenceApp";
             this.Load += new System.EventHandler(this.LocalDrivingLicenceApp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenceApplications)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -112,5 +161,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvLocalDrivingLicenceApplications;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sechduleTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem2;
     }
 }
