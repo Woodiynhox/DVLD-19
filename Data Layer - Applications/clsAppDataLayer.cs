@@ -251,6 +251,108 @@ namespace Data_Layer___Applications
         }
 
 
+        public static bool GetApplicationInfoByApplicationID(
+    int localDrivingLicenseApplicationID,
+    ref int personID,
+    ref string appliedFor,
+    ref string createdBy,
+    ref string firstName,
+    ref string secondName,
+    ref string thirdName,
+    ref string lastName,
+    ref int applicationStatus,
+    ref DateTime applicationDate,
+    ref DateTime lastStatusDate,
+    ref int passedTests)
+        {
+            Console.WriteLine($"Parameter LocalDrivingLicenseApplicationID: {localDrivingLicenseApplicationID}"); // Log here
+            string query = @"
+        SELECT 
+    Applications.ApplicationID,
+    LicenseClasses.ClassName AS AppliedFor,
+    Users.UserName AS CreatedBy,
+    People.PersonID,
+    People.FirstName,
+    People.SecondName,
+    People.ThirdName,
+    People.LastName,
+    Applications.ApplicationStatus,
+    Applications.ApplicationDate,
+    Applications.LastStatusDate,
+    COUNT(Tests.TestResult) AS PassedTests
+FROM 
+    Applications
+INNER JOIN 
+    LocalDrivingLicenseApplications 
+    ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+INNER JOIN 
+    LicenseClasses 
+    ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID
+INNER JOIN 
+    People 
+    ON Applications.ApplicantPersonID = People.PersonID
+INNER JOIN 
+    Users 
+    ON Applications.CreatedByUserID = Users.UserID
+LEFT JOIN 
+    Tests 
+    ON Users.UserID = Tests.CreatedByUserID AND Tests.TestResult = 1
+WHERE 
+    LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID = @localDrivingLicenseApplicationID
+GROUP BY 
+    Applications.ApplicationID, LicenseClasses.ClassName, Users.UserName, People.PersonID, 
+    People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+    Applications.ApplicationStatus, Applications.ApplicationDate, Applications.LastStatusDate;
+";
+
+            SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
+
+            Console.WriteLine($"Parameter LocalDrivingLicenseApplicationID: {localDrivingLicenseApplicationID}");
+          //  Console.WriteLine($"SQL Query: {query}");
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Populate values
+                    personID = reader["PersonID"] == DBNull.Value ? -1 : Convert.ToInt32(reader["PersonID"]);
+                    appliedFor = reader["AppliedFor"] == DBNull.Value ? string.Empty : reader["AppliedFor"].ToString();
+                    createdBy = reader["CreatedBy"] == DBNull.Value ? string.Empty : reader["CreatedBy"].ToString();
+                    firstName = reader["FirstName"] == DBNull.Value ? string.Empty : reader["FirstName"].ToString();
+                    secondName = reader["SecondName"] == DBNull.Value ? string.Empty : reader["SecondName"].ToString();
+                    thirdName = reader["ThirdName"] == DBNull.Value ? string.Empty : reader["ThirdName"].ToString();
+                    lastName = reader["LastName"] == DBNull.Value ? string.Empty : reader["LastName"].ToString();
+                    applicationStatus = reader["ApplicationStatus"] == DBNull.Value ? -1 : Convert.ToInt32(reader["ApplicationStatus"]);
+                    applicationDate = reader["ApplicationDate"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["ApplicationDate"]);
+                    lastStatusDate = reader["LastStatusDate"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["LastStatusDate"]);
+                    passedTests = reader["PassedTests"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PassedTests"]);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data found in database.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
 
     }
 }

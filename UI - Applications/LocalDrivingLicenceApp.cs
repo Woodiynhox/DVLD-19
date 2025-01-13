@@ -56,6 +56,20 @@ namespace UI___Applications
             frm.ShowDialog();
         }
 
-       
+        private void cmsScheduleVisionTest_Click(object sender, EventArgs e)
+        {
+            if (dgvLocalDrivingLicenceApplications.CurrentRow != null)
+            {
+                int localDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenceApplications.CurrentRow.Cells[0].Value);
+                Console.WriteLine($"This is the LocalDrivingLicenseApplicationID sent by Data Grid View: {localDrivingLicenseApplicationID}");
+                frmVisionTestAppointment frm = new frmVisionTestAppointment(localDrivingLicenseApplicationID);
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row first.");
+            }
+        }
+
     }
 }

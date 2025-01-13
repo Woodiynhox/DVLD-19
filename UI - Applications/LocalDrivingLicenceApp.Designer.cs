@@ -34,7 +34,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.sechduleTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ssToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
             this.ssToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ssToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -71,7 +71,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sechduleTestToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 50);
             // 
             // button1
             // 
@@ -93,21 +93,22 @@
             // sechduleTestToolStripMenuItem
             // 
             this.sechduleTestToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ssToolStripMenuItem,
+            this.cmsScheduleVisionTest,
             this.ssToolStripMenuItem1,
             this.ssToolStripMenuItem2});
             this.sechduleTestToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sechduleTestToolStripMenuItem.Image = global::UI___Applications.Properties.Resources.Schedule_Test_512;
             this.sechduleTestToolStripMenuItem.Name = "sechduleTestToolStripMenuItem";
-            this.sechduleTestToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.sechduleTestToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.sechduleTestToolStripMenuItem.Text = "Schedule Test";
             // 
-            // ssToolStripMenuItem
+            // cmsScheduleVisionTest
             // 
-            this.ssToolStripMenuItem.Image = global::UI___Applications.Properties.Resources.Vision_512;
-            this.ssToolStripMenuItem.Name = "ssToolStripMenuItem";
-            this.ssToolStripMenuItem.Size = new System.Drawing.Size(224, 24);
-            this.ssToolStripMenuItem.Text = "Schedule Vision Test";
+            this.cmsScheduleVisionTest.Image = global::UI___Applications.Properties.Resources.Vision_512;
+            this.cmsScheduleVisionTest.Name = "cmsScheduleVisionTest";
+            this.cmsScheduleVisionTest.Size = new System.Drawing.Size(224, 24);
+            this.cmsScheduleVisionTest.Text = "Schedule Vision Test";
+            this.cmsScheduleVisionTest.Click += new System.EventHandler(this.cmsScheduleVisionTest_Click);
             // 
             // ssToolStripMenuItem1
             // 
@@ -163,7 +164,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem sechduleTestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmsScheduleVisionTest;
         private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ssToolStripMenuItem2;
     }

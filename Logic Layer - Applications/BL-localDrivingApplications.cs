@@ -11,6 +11,41 @@ namespace Logic_Layer___Applications
 {
     public class clsBL_localDrivingApplications
     {
+    //    private int _applicationID = -1;
+        public int ApplicationID { get; set; }
+        public int PersonID { get; set; }
+        public string AppliedFor { get; set; } 
+        public string CreatedBy { get; set; } 
+        public string FirstName { get; set; } 
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public string LastName { get; set; }
+        public int ApplicationStatus { get; set; }
+        public int PassedTests { get; set; } 
+        public DateTime ApplicationDate { get; set; }
+        public DateTime LastStatusDate { get; set; }
+
+        public clsBL_localDrivingApplications() { }
+
+
+        public clsBL_localDrivingApplications(int applicationID,int personID, string appliedFor, string createdBy, string firstName,
+       string secondName, string thirdName, string lastName, int applicationStatus, int passedTests,
+       DateTime applicationDate, DateTime lastStatusDate)
+        {
+            ApplicationID = applicationID;
+            PersonID = personID;
+            AppliedFor = appliedFor;
+            CreatedBy = createdBy;
+            FirstName = firstName;
+            SecondName = secondName;
+            ThirdName = thirdName;
+            LastName = lastName;
+            ApplicationStatus = applicationStatus;
+            PassedTests = passedTests;
+            ApplicationDate = applicationDate;
+            LastStatusDate = lastStatusDate;
+        }
+
         public static DataTable GetAllLocalDrivingApplications()
         {
 
@@ -54,6 +89,36 @@ namespace Logic_Layer___Applications
                 return false;
             }
 
+        }
+
+        public static clsBL_localDrivingApplications GetApplicationInfoByApplicationID( int applicationID)
+        {
+            string appliedFor = "";
+            int personID = -1;
+            string createdBy = "";
+            string firstName = "";
+            string secondName = "";
+            string thirdName = "";
+            string lastName = "";
+            int applicationStatus = -1;
+            int passedTests = -1;
+            DateTime applicationDate = DateTime.Now;
+            DateTime lastStatusDate= DateTime.Now;
+            bool isDataFound = clsAppDataLayer.GetApplicationInfoByApplicationID(
+                            applicationID, ref personID, ref appliedFor, ref createdBy, ref firstName, ref secondName,
+                           ref thirdName, ref lastName, ref applicationStatus, ref applicationDate, ref lastStatusDate, ref passedTests);
+
+            if (isDataFound)
+            {
+                return new clsBL_localDrivingApplications(applicationID, personID, appliedFor, createdBy, firstName,
+                    secondName, thirdName, lastName, applicationStatus, passedTests, applicationDate, lastStatusDate);
+            }
+            else
+            {
+                // Log or handle the case when no data is found
+                Console.WriteLine($"No data found for Application ID: {applicationID}");
+                return null;
+            }
         }
     }
 }
