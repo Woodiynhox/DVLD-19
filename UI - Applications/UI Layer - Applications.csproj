@@ -53,6 +53,12 @@
     <Compile Include="ApplicationsTypes.Designer.cs">
       <DependentUpon>ApplicationsTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="LAI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LAI.Designer.cs">
+      <DependentUpon>LAI.cs</DependentUpon>
+    </Compile>
     <Compile Include="LicenceApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
