@@ -36,12 +36,14 @@ namespace UI___Applications
                 lblAppliedClass.Text = _clsL_D_A.AppliedFor;
                 lblPassedTests.Text = _clsL_D_A.PassedTests.ToString();
                 lblIDBasicInfo.Text = _clsL_D_A.PersonID.ToString();
-                lblStatusBasicInfo.Text = _clsL_D_A.ApplicationStatus.ToString();
+                lblStatusBasicInfo.Text = _clsL_D_A.ApplicationStatus.ToString() == "1" ? "New" : _clsL_D_A.ApplicationStatus.ToString() == "2" ? "Cancel" : "Completed"; 
                 lblTypeBasicInfo.Text = "New Local Driving Licence Service";
                 lblApplicantNameBasicInfo.Text = $"{_clsL_D_A.FirstName} {_clsL_D_A.SecondName} {_clsL_D_A.ThirdName} {_clsL_D_A.LastName}";
                 lblDateBasicInfo.Text = _clsL_D_A.ApplicationDate.ToShortDateString();
-                lblStatusBasicInfo.Text = _clsL_D_A.LastStatusDate.ToShortDateString();
+             //   lblStatusBasicInfo.Text = _clsL_D_A.LastStatusDate.ToShortDateString();
                 lblCreatedByBasicInfo.Text = _clsL_D_A.CreatedBy;
+                lblStatusDateBasicInfo.Text = _clsL_D_A.LastStatusDate.ToShortDateString();
+                lblFeesBasicInfo.Text = "15";
             }
             else
             {
