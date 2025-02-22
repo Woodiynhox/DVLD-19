@@ -18,13 +18,17 @@ namespace UI___Applications
         int _LocalDrivingLicenseApplicationID;
         DateTime _AppointmentDate;
         int _CreatedByUserID;
-        public frmScheduleTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
+        string _applicantName;
+        string _drivingClass;
+        public frmScheduleTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID, string FirstName, string lastName, string drivingClass)
         {
             InitializeComponent();
             _TestTypeID = TestTypeID;
             _LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             _AppointmentDate = AppointmentDate;
             _CreatedByUserID = CreatedByUserID;
+            _applicantName = FirstName + " " + lastName;
+            _drivingClass = drivingClass;
 
         }
 
@@ -50,6 +54,10 @@ namespace UI___Applications
 
         private void ScheduleTest_Load(object sender, EventArgs e)
         {
+            lblDLAppID.Text = _LocalDrivingLicenseApplicationID.ToString();
+            lblDrivingClass.Text = _drivingClass.ToString();
+            lblFees.Text = "15";
+            lbName.Text = _applicantName;
 
         }
 
@@ -60,7 +68,7 @@ namespace UI___Applications
 
         private void btnSaveVisionTest_Click(object sender, EventArgs e)
         {
-            if (clsBL_localDrivingApplications.scheduleVisionTest())
+            if (clsBL_localDrivingApplications.scheduleVisionTest(_TestTypeID, _LocalDrivingLicenseApplicationID, _AppointmentDate, _CreatedByUserID))
             {
                 MessageBox.Show("The Test has been placed!", "Saved Succesfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -69,6 +77,11 @@ namespace UI___Applications
                 MessageBox.Show("Error Not Saved!", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

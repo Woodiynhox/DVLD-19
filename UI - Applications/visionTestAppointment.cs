@@ -65,8 +65,20 @@ namespace UI___Applications
 
         private void pbNewAppointment_Click(object sender, EventArgs e)
         {
-            frmScheduleTest frm = new frmScheduleTest(1, _clsL_D_A.ApplicationID, _clsL_D_A.ApplicationDate, _clsL_D_A.CreatedBy);
-            frm.ShowDialog();
+
+            int createdByuserID = clsBL_localDrivingApplications.GetUserIDByUsername(_clsL_D_A.CreatedBy.ToString());
+            
+
+            if (createdByuserID != -1)
+            {
+                frmScheduleTest frm = new frmScheduleTest(1, _clsL_D_A.ApplicationID, _clsL_D_A.ApplicationDate, createdByuserID, _clsL_D_A.FirstName, _clsL_D_A.LastName, _clsL_D_A.AppliedFor);
+                frm.ShowDialog();
+            }
+            else {
+
+                MessageBox.Show("Error Finding UserID!");
+            
+            }
         }
     }
 }

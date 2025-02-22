@@ -11,24 +11,24 @@ namespace Logic_Layer___Applications
 {
     public class clsBL_localDrivingApplications
     {
-    //    private int _applicationID = -1;
+        //    private int _applicationID = -1;
         public int ApplicationID { get; set; }
         public int PersonID { get; set; }
-        public string AppliedFor { get; set; } 
-        public string CreatedBy { get; set; } 
-        public string FirstName { get; set; } 
+        public string AppliedFor { get; set; }
+        public string CreatedBy { get; set; }
+        public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
         public string LastName { get; set; }
         public int ApplicationStatus { get; set; }
-        public int PassedTests { get; set; } 
+        public int PassedTests { get; set; }
         public DateTime ApplicationDate { get; set; }
         public DateTime LastStatusDate { get; set; }
 
         public clsBL_localDrivingApplications() { }
 
 
-        public clsBL_localDrivingApplications(int applicationID,int personID, string appliedFor, string createdBy, string firstName,
+        public clsBL_localDrivingApplications(int applicationID, int personID, string appliedFor, string createdBy, string firstName,
        string secondName, string thirdName, string lastName, int applicationStatus, int passedTests,
        DateTime applicationDate, DateTime lastStatusDate)
         {
@@ -69,10 +69,11 @@ namespace Logic_Layer___Applications
 
             ApplicationID = clsAppDataLayer.AddNewApplication(applicantPersonID, UserID, PaidFees, ApplicantTypeID, ApplicantStatus, ApplicationDate, LastStatusDate);
 
-            if (ApplicationID != -1) {
+            if (ApplicationID != -1)
+            {
 
                 LocalDrivingLicenseApplicationsID = clsAppDataLayer.LocalDrivingLicenseApplications(ApplicationID, licenseClass);
-                
+
                 if (LocalDrivingLicenseApplicationsID != -1)
                 {
                     return true;
@@ -81,7 +82,7 @@ namespace Logic_Layer___Applications
                 {
                     return false;
                 }
-             
+
 
             }
             else
@@ -98,7 +99,7 @@ namespace Logic_Layer___Applications
 
         }
 
-        public static clsBL_localDrivingApplications GetApplicationInfoByApplicationID( int applicationID)
+        public static clsBL_localDrivingApplications GetApplicationInfoByApplicationID(int applicationID)
         {
             string appliedFor = "";
             int personID = -1;
@@ -110,7 +111,7 @@ namespace Logic_Layer___Applications
             int applicationStatus = -1;
             int passedTests = -1;
             DateTime applicationDate = DateTime.Now;
-            DateTime lastStatusDate= DateTime.Now;
+            DateTime lastStatusDate = DateTime.Now;
             bool isDataFound = clsAppDataLayer.GetApplicationInfoByApplicationID(
                             applicationID, ref personID, ref appliedFor, ref createdBy, ref firstName, ref secondName,
                            ref thirdName, ref lastName, ref applicationStatus, ref applicationDate, ref lastStatusDate, ref passedTests);
@@ -146,5 +147,26 @@ namespace Logic_Layer___Applications
 
         }
 
+        public static int GetUserIDByUsername(string username)
+        {
+            {
+                int userID = -1;
+
+                userID = clsAppDataLayer.GetUserIDByUsername(username);
+
+                if (userID != -1)
+                {
+                    return userID;
+                }
+                else
+                {
+                    return userID;
+                }
+
+
+            }
+
+        }
     }
 }
+

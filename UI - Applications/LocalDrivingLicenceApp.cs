@@ -62,7 +62,7 @@ namespace UI___Applications
             {
                 int localDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenceApplications.CurrentRow.Cells[0].Value);
                 Console.WriteLine($"This is the LocalDrivingLicenseApplicationID sent by Data Grid View: {localDrivingLicenseApplicationID}");
-                frmVisionTestAppointment frm = new frmVisionTestAppointment(localDrivingLicenseApplicationID, _username);
+                frmVisionTestAppointment frm = new frmVisionTestAppointment(localDrivingLicenseApplicationID);
                 frm.Show();
             }
             else

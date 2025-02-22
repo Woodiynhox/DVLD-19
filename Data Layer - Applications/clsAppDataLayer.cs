@@ -434,19 +434,18 @@ GROUP BY
         }
 
 
-        public static bool GetUserInfoByName(string userName, ref int userID, ref string isActive)
+        public static int GetUserIDByUsername(string UserName)
         {
-            bool isFound = false;
+            int userID;
 
             string query = @"
-        SELECT UserID, UserName, IsActive 
-        FROM Users 
-        WHERE UserName = @userName";
+        select UserID from Users
+        WHERE UserName = @UserName";
 
             using (SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                command.Parameters.AddWithValue("@userName", userName);
+                command.Parameters.AddWithValue("@UserName", UserName);
 
                 try
                 {
@@ -456,35 +455,70 @@ GROUP BY
                         if (reader.Read())
                         {
                             // The record was found
-                            isFound = true;
-
                             userID = reader["UserID"] != DBNull.Value ? Convert.ToInt32(reader["UserID"]) : -1;
-                            userName = reader["UserName"] as string ?? string.Empty;
-                            isActive = reader["IsActive"] != DBNull.Value && Convert.ToByte(reader["IsActive"]) == 0 ? "No" : "Yes";
                         }
                         else
                         {
                             // No matching record
-                            isFound = false;
+                            
                             userID = -1;
-                            userName = string.Empty;
-                            isActive = "Unknown";
+                            
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     LogError(ex);
-                    isFound = false;
                     userID = -1;
-                    userName = string.Empty;
-                    isActive = "Unknown";
+                    
                 }
             }
 
-            return isFound;
+            return userID;
         }
 
+       /* public static int getTestApplicationInfo(int applicationID)
+        {
+            int userID;
+
+            string query = @"
+        select UserID from Users
+        WHERE UserName = @UserName";
+
+            using (SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@UserName", UserName);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // The record was found
+                            userID = reader["UserID"] != DBNull.Value ? Convert.ToInt32(reader["UserID"]) : -1;
+                        }
+                        else
+                        {
+                            // No matching record
+                            
+                            userID = -1;
+                            
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex);
+                    userID = -1;
+                    
+                }
+            }
+
+            return userID;
+        }*/
 
 
     }
