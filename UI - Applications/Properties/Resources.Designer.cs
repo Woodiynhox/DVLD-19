@@ -153,6 +153,16 @@ namespace UI___Applications.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Calendar_322 {
+            get {
+                object obj = ResourceManager.GetObject("Calendar 322", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_32 {
             get {
                 object obj = ResourceManager.GetObject("Close 32", resourceCulture);
@@ -186,6 +196,16 @@ namespace UI___Applications.Properties {
         internal static System.Drawing.Bitmap Driver_License_48 {
             get {
                 object obj = ResourceManager.GetObject("Driver License 48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap driving_test_512 {
+            get {
+                object obj = ResourceManager.GetObject("driving-test 512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,6 +303,16 @@ namespace UI___Applications.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Lost_Driving_License_321 {
+            get {
+                object obj = ResourceManager.GetObject("Lost Driving License 321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap money_32 {
             get {
                 object obj = ResourceManager.GetObject("money 32", resourceCulture);
@@ -296,6 +326,26 @@ namespace UI___Applications.Properties {
         internal static System.Drawing.Bitmap money_321 {
             get {
                 object obj = ResourceManager.GetObject("money 321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money_322 {
+            get {
+                object obj = ResourceManager.GetObject("money 322", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Number_32 {
+            get {
+                object obj = ResourceManager.GetObject("Number 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

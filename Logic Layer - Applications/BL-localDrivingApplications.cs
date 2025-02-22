@@ -91,6 +91,13 @@ namespace Logic_Layer___Applications
 
         }
 
+        public static DataTable getAllAppointment()
+        {
+
+            return clsAppDataLayer.getAllAppointment();
+
+        }
+
         public static clsBL_localDrivingApplications GetApplicationInfoByApplicationID( int applicationID)
         {
             string appliedFor = "";
@@ -120,5 +127,24 @@ namespace Logic_Layer___Applications
                 return null;
             }
         }
+
+        public static bool scheduleVisionTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
+        {
+            int testAppointmentID = -1;
+
+            testAppointmentID = clsAppDataLayer.scheduleVisionTest(TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, CreatedByUserID);
+
+            if (testAppointmentID != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
     }
 }

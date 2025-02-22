@@ -310,7 +310,7 @@ GROUP BY
             command.Parameters.AddWithValue("@localDrivingLicenseApplicationID", localDrivingLicenseApplicationID);
 
             Console.WriteLine($"Parameter LocalDrivingLicenseApplicationID: {localDrivingLicenseApplicationID}");
-          //  Console.WriteLine($"SQL Query: {query}");
+            //  Console.WriteLine($"SQL Query: {query}");
 
 
             try
@@ -352,7 +352,142 @@ GROUP BY
         }
 
 
+        public static DataTable getAllAppointment()
+        {
+            // select * from TestTypes order by TestTypeFees asc
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString);
+
+            string query = "select TestAppointmentID, AppointmentDate, PaidFees, IsLocked from dbo.TestAppointments_View";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                LogError(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+
+        }
+
+        public static int scheduleVisionTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
+        {
+            int testAppointmentID = -1;
+
+            using (SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = @"
+                 INSERT INTO TestAppointments
+                 (TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate, PaidFees, CreatedByUserID, IsLocked)
+                 VALUES (@TestTypeID, @LocalDrivingLicenseApplicationID, @AppointmentDate, 10, @CreatedByUserID, 0);
+                 SELECT SCOPE_IDENTITY();";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                    command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                    command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+                    command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                    {
+                        testAppointmentID = insertedID;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return testAppointmentID;
+        }
+
+
+        public static bool GetUserInfoByName(string userName, ref int userID, ref string isActive)
+        {
+            bool isFound = false;
+
+            string query = @"
+        SELECT UserID, UserName, IsActive 
+        FROM Users 
+        WHERE UserName = @userName";
+
+            using (SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@userName", userName);
+
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // The record was found
+                            isFound = true;
+
+                            userID = reader["UserID"] != DBNull.Value ? Convert.ToInt32(reader["UserID"]) : -1;
+                            userName = reader["UserName"] as string ?? string.Empty;
+                            isActive = reader["IsActive"] != DBNull.Value && Convert.ToByte(reader["IsActive"]) == 0 ? "No" : "Yes";
+                        }
+                        else
+                        {
+                            // No matching record
+                            isFound = false;
+                            userID = -1;
+                            userName = string.Empty;
+                            isActive = "Unknown";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex);
+                    isFound = false;
+                    userID = -1;
+                    userName = string.Empty;
+                    isActive = "Unknown";
+                }
+            }
+
+            return isFound;
+        }
+
 
 
     }
+
 }
+

@@ -127,6 +127,7 @@
             this.pbNewAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbNewAppointment.TabIndex = 6;
             this.pbNewAppointment.TabStop = false;
+            this.pbNewAppointment.Click += new System.EventHandler(this.pbNewAppointment_Click);
             // 
             // pictureBox1
             // 

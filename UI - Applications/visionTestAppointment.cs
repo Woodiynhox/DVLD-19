@@ -15,18 +15,29 @@ namespace UI___Applications
     {
         int _ApplicationID;
         clsBL_localDrivingApplications _clsL_D_A;
+        //string _createdBy;
 
 
         public frmVisionTestAppointment(int localDrivingLicenseApplicationID)
         {
             InitializeComponent();
             _ApplicationID = localDrivingLicenseApplicationID;
+
+           // _createdBy = CreatedBy;
           
+        }
+
+        private void _RefreshTestTypes()
+        {
+            dgvAppointments.DataSource = clsBL_localDrivingApplications.getAllAppointment();
         }
 
 
         private void visionTestAppointment_Load(object sender, EventArgs e)
         {
+            //List all the Appointments.
+            _RefreshTestTypes();
+
             _clsL_D_A = clsBL_localDrivingApplications.GetApplicationInfoByApplicationID(_ApplicationID);
             Console.WriteLine($"Loading data for _ApplicationID: {_ApplicationID}"); // Log here
 
@@ -50,6 +61,12 @@ namespace UI___Applications
                 MessageBox.Show("No data found.");
             }
 
+        }
+
+        private void pbNewAppointment_Click(object sender, EventArgs e)
+        {
+            frmScheduleTest frm = new frmScheduleTest(1, _clsL_D_A.ApplicationID, _clsL_D_A.ApplicationDate, _clsL_D_A.CreatedBy);
+            frm.ShowDialog();
         }
     }
 }
