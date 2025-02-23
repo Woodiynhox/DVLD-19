@@ -92,10 +92,10 @@ namespace Logic_Layer___Applications
 
         }
 
-        public static DataTable getAllAppointment()
+        public static DataTable getAllAppointment(string firstName, string lastName)
         {
 
-            return clsAppDataLayer.getAllAppointment();
+            return clsAppDataLayer.getAllAppointment( firstName, lastName);
 
         }
 
@@ -129,7 +129,7 @@ namespace Logic_Layer___Applications
             }
         }
 
-        public static bool scheduleVisionTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
+        public static int scheduleVisionTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
         {
             int testAppointmentID = -1;
 
@@ -137,11 +137,11 @@ namespace Logic_Layer___Applications
 
             if (testAppointmentID != -1)
             {
-                return true;
+                return testAppointmentID;
             }
             else
             {
-                return false;
+                return testAppointmentID;
             }
 
 

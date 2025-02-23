@@ -38,6 +38,8 @@ namespace UI___Applications
         private void _RefreshTestTypes()
         {
             dgvLocalDrivingLicenceApplications.DataSource = clsBL_localDrivingApplications.GetAllLocalDrivingApplications();
+            
+
         }
 
         private void LocalDrivingLicenceApp_Load(object sender, EventArgs e)
@@ -49,6 +51,18 @@ namespace UI___Applications
         {
 
         }
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (dgvLocalDrivingLicenceApplications.CurrentRow != null)
+            {
+                string status = dgvLocalDrivingLicenceApplications.CurrentRow.Cells[6].Value?.ToString() ?? "";
+
+                // Disable (gray out) options if status is "New"
+                cmsScheduleStreetTest.Enabled = status != "New";
+                cmsScheduleWrittenTest.Enabled = status != "New";
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -61,7 +75,7 @@ namespace UI___Applications
             if (dgvLocalDrivingLicenceApplications.CurrentRow != null)
             {
                 int localDrivingLicenseApplicationID = Convert.ToInt32(dgvLocalDrivingLicenceApplications.CurrentRow.Cells[0].Value);
-                Console.WriteLine($"This is the LocalDrivingLicenseApplicationID sent by Data Grid View: {localDrivingLicenseApplicationID}");
+           
                 frmVisionTestAppointment frm = new frmVisionTestAppointment(localDrivingLicenseApplicationID);
                 frm.Show();
             }

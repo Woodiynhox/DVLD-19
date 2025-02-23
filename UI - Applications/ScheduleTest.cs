@@ -68,8 +68,15 @@ namespace UI___Applications
 
         private void btnSaveVisionTest_Click(object sender, EventArgs e)
         {
-            if (clsBL_localDrivingApplications.scheduleVisionTest(_TestTypeID, _LocalDrivingLicenseApplicationID, _AppointmentDate, _CreatedByUserID))
+            DateTime selectedDate = dtpDate.Value; 
+
+            int testAppointment = clsBL_localDrivingApplications.scheduleVisionTest(_TestTypeID, _LocalDrivingLicenseApplicationID, selectedDate, _CreatedByUserID);
+            if (testAppointment != -1)
             {
+
+                //Add to test table
+
+
                 MessageBox.Show("The Test has been placed!", "Saved Succesfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

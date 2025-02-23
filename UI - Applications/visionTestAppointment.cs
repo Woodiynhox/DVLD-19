@@ -29,17 +29,19 @@ namespace UI___Applications
 
         private void _RefreshTestTypes()
         {
-            dgvAppointments.DataSource = clsBL_localDrivingApplications.getAllAppointment();
+            dgvAppointments.DataSource = clsBL_localDrivingApplications.getAllAppointment(_clsL_D_A.FirstName, _clsL_D_A.LastName);
         }
 
 
         private void visionTestAppointment_Load(object sender, EventArgs e)
         {
-            //List all the Appointments.
-            _RefreshTestTypes();
+           
 
             _clsL_D_A = clsBL_localDrivingApplications.GetApplicationInfoByApplicationID(_ApplicationID);
             Console.WriteLine($"Loading data for _ApplicationID: {_ApplicationID}"); // Log here
+
+            //List all the Appointments.
+            _RefreshTestTypes();
 
             if (_clsL_D_A != null)
             {
@@ -78,6 +80,30 @@ namespace UI___Applications
 
                 MessageBox.Show("Error Finding UserID!");
             
+            }
+        }
+
+        private void dgvAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            int createdByuserID = clsBL_localDrivingApplications.GetUserIDByUsername(_clsL_D_A.CreatedBy.ToString());
+
+
+            if (createdByuserID != -1)
+            {
+                frmScheduleTest frm = new frmScheduleTest(1, _clsL_D_A.ApplicationID, _clsL_D_A.ApplicationDate, createdByuserID, _clsL_D_A.FirstName, _clsL_D_A.LastName, _clsL_D_A.AppliedFor);
+                frm.ShowDialog();
+            }
+            else
+            {
+
+                MessageBox.Show("Error Finding UserID!");
+
             }
         }
     }

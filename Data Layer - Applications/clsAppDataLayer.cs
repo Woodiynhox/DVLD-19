@@ -352,45 +352,42 @@ GROUP BY
         }
 
 
-        public static DataTable getAllAppointment()
+        public static DataTable getAllAppointment(string firstName, string lastName)
         {
-            // select * from TestTypes order by TestTypeFees asc
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString);
-
-            string query = "select TestAppointmentID, AppointmentDate, PaidFees, IsLocked from dbo.TestAppointments_View";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsAppDataAccessSettings.ConnectionString))
             {
-                connection.Open();
+                string query = "SELECT TestAppointmentID, AppointmentDate, PaidFees, IsLocked " +
+                               "FROM dbo.TestAppointments_View " +
+                               "WHERE FullName LIKE @fullNamePattern;";
 
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    dt.Load(reader);
+                    // Concatenate wildcards correctly
+                    string fullNamePattern = firstName + "%" + lastName;
+
+                    command.Parameters.AddWithValue("@fullNamePattern", fullNamePattern);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogError(ex);
+                    }
                 }
-
-                reader.Close();
-
-
             }
-
-            catch (Exception ex)
-            {
-                LogError(ex);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
             return dt;
-
         }
+
 
         public static int scheduleVisionTest(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate, int CreatedByUserID)
         {
